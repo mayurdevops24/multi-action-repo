@@ -8,3 +8,4 @@ runs:
   using: 'node20'
   steps:
     - run: echo "Greetings, ${{ inputs.name }} from Action Two!"
+      shell: bash
