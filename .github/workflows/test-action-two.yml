@@ -1,1 +1,12 @@
+name: Test Action Two
+on: [push]
 
+jobs:
+  test-action-two:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Action Two
+        uses: ./action-two
+        with:
+          name: 'Test Two'
