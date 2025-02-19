@@ -1,0 +1,10 @@
+name: 'Action One'
+description: 'First GitHub Action'
+inputs:
+  name:
+    description: 'Your name'
+    required: true
+runs:
+  using: 'node20'
+  steps:
+    - run: echo "Hello, ${{ inputs.name }} from Action One!"
