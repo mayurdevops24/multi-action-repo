@@ -6,6 +6,4 @@ inputs:
     required: true
 runs:
   using: 'node20'
-  steps:
-    - run: echo "Greetings, ${{ inputs.name }} from Action Two!"
-      shell: bash
+  main: 'index.js'  # Add this line to specify the entry point
