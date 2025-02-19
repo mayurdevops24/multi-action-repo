@@ -5,6 +5,7 @@ inputs:
     description: 'Your name'
     required: true
 runs:
-  using: 'node20'
+  using: 'composite'
   steps:
     - run: echo "Hello, ${{ inputs.name }} from Action One!"
+      shell: bash
