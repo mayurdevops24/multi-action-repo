@@ -1,9 +1,11 @@
-name: 'Action Two'
-description: 'Second GitHub Action'
+name: 'Action One'
+description: 'First GitHub Action'
 inputs:
   name:
     description: 'Your name'
     required: true
 runs:
-  using: 'node20'
-  main: 'index.js'  # Add this line to specify the entry point
+  using: 'composite'
+  steps:
+    - run: echo "Hello, ${{ inputs.name }} from Action One!"
+      shell: bash
