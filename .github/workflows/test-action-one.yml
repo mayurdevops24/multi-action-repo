@@ -1,13 +1,26 @@
-
 name: Test Action One
 on: [push]
 
 jobs:
   test-action-one:
     runs-on: ubuntu-latest
+    outputs:
+      job-status: ${{ job.status }}
+      duration: ${{ steps.start-time.outputs.duration }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Start Timer
+        id: start-time
+        run: echo "duration=$(date +%s)" >> "$GITHUB_OUTPUT"
+
       - name: Run Action One
         uses: ./action-one
         with:
           name: 'Test One'
+
+      - name: End Timer
+        run: |
+          start_time=${{ steps.start-time.outputs.duration }}
+          end_time=$(date +%s)
+          duration=$((end_time - start_time))
+          echo "Duration: ${duration}s"
+          echo "duration=${duration}s" >> "$GITHUB_OUTPUT"
